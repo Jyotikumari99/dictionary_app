@@ -2,33 +2,234 @@
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Dictionary</title>
-     <!-- libk fro icons -->
-     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dictionary</title>
+  <!-- libk fro icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-image: linear-gradient(aqua, blue)
+    }
+
+    .wrapper {
+      width: 420px;
+      background-color: aqua;
+      padding: 30px 30px 45px;
+      border-radius: 10px;
+    }
+
+    .wrapper header {
+      font-size: 30px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .wrapper .search {
+      position: relative;
+      margin: 35px 0 18px;
+    }
+
+    .search input {
+      height: 53px;
+      width: 100%;
+      outline: none;
+      font-size: 16px;
+      border-radius: 5px;
+      padding: 0 42px;
+      border: 1px solid blue;
+    }
+
+    .search input:focus {
+      padding: 0 41px;
+      border: 2px solid blue;
+    }
+
+    .search input::placeholder {
+      color: #999;
+    }
+
+    .search :where(i, span) {
+      position: absolute;
+      top: 50%;
+      color: blue;
+      transform: translateY(-50%);
+    }
+
+    .search i {
+      left: 18px;
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+    .search input:focus~i {
+      color: #999;
+    }
+
+    .search span {
+      right: 15px;
+      cursor: pointer;
+      font-size: 18px;
+      display: none;
+    }
+
+    .search input:valid~span {
+      display: block;
+    }
+
+    .wrapper .info-text {
+      font-size: 13px;
+      color: #999;
+      margin: -3px 0 -10px;
+    }
+
+    .info-text span {
+      font-weight: 500;
+    }
+
+    .wrapper ul {
+      display: none;
+    }
+
+    .wrapper ul li {
+      display: flex;
+      align-items: center;
+      margin-top: 14px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid whitesmoke;
+      justify-content: space-between;
+    }
+
+    ul li:last-child {
+      margin-top: 0px;
+      padding-bottom: 0px;
+      border-bottom: 0px;
+
+    }
+
+    ul .word p {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    ul .word span {
+      font-size: 12px;
+      color: rgb(152, 149, 144);
+    }
+
+    ul .word i {
+      cursor: pointer;
+      font-size: 15px;
+      color: rgb(34, 33, 33);
+    }
+
+    .content li .details {
+      padding-left: 10px;
+      border-radius: 4px 0 0 4px;
+      border-left: 3px solid blue;
+    }
+
+    .content li .details p {
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    .content li .details span {
+      font-size: 15px;
+      color: #999;
+    }
+
+    .synonyms .details .list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .synonyms .details .list span {
+      cursor: pointer;
+      margin-right: 5px;
+      text-decoration: underline;
+
+    }
+  </style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <header>English Dictionary</header>
-        <div class="search">
-          <input type="text" name="" id="" placeholder="Search a word">
-          <i class="fas fa-search"></i>
-          <span class="material-icons">close</span>
-        </div>
-        <ul>
-          <li class="word">
-            <div class="details">
-              <p>Happy</p>
-              <span>adjective/'hapi/</span>
-            </div>
-          </li>
-        </ul>
+  <div class="wrapper">
+    <header>English Dictionary</header>
+    <div class="search">
+      <input type="text" name="" id="" placeholder="Search a word" required>
+      <i class="fas fa-search"></i>
+      <span class="material-icons">close</span>
     </div>
+    <p class="info-text">Type a word and press enter to get meaning,example,synonyms, etc.</p>
+    <ul>
+      <li class="word">
+        <div class="details">
+          <p>Happy</p>
+          <span>adjective/'hapi/</span>
+        </div>
+        <i class="fas fa-volume-up"></i>
+      </li>
+      <div class="content">
+        <li class="meaning">
+          <div class="details">
+            <p>Meaning</p>
+            <span>feeling or showing pleasure or conetment</span>
+          </div>
+        </li>
+        <li class="example">
+          <div class="details">
+            <p>Example</p>
+            <span>Jyoti came in looking happy and excited</span>
+          </div>
+        </li>
+
+        <li class="synonyms">
+          <div class="details">
+            <p>Synonyms</p>
+            <span>glad,</span>
+            <span>contented,</span>
+            <span>delighted,</span>
+            <span>cheerful,</span>
+            <span>joyful,</span>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </div>
+  <script>
+    const wrapper = document.querySelector(".wrapper"),
+      searchInput = wrapper.querySelector("input"),
+      infoText = wrapper.querySelector(".info-text");
+
+    //fetch api function
+    function fetchApi(word) {
+      infoText.style.color="#000"
+      infoText.innerHTML = `Searching the meaning of <span>"${word}"</span>`;
+      let url=`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
+      fetch(url).then(res=>res.json()).then(result=>console.log(result));
+    }
+    searchInput.addEventListener("keyup", e => {
+      if (e.key === "Enter" && e.target.value) {
+        fetchApi(e.target.value)
+      }
+    })
+  </script>
 </body>
+
+
 
 </html>
